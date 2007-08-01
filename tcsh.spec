@@ -3,18 +3,32 @@
 Summary:	An enhanced version of csh, the C shell
 Name:		tcsh
 Version:	6.14
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	BSD
 Group:		Shells
 URL:		http://www.tcsh.org/
 Source:		ftp://ftp.funet.fi/pub/unix/shells/tcsh/tcsh-%{version}.00.tar.bz2
 Source1:	alias.csh
-Patch1:		tcsh-6.09.00-termios.patch
-Patch3:		tcsh-6.14.00-lsF.patch
-Patch4:		tcsh-6.14.00-dashn.patch
-Patch5:		tcsh-6.14.00-read.patch
-Patch6:		tcsh-6.10.00-glibc_compat.patch
-Patch7:		tcsh-6.14.00-getauthuid-is-not-in-auth_h.patch
+# patches from fedora
+Patch0: tcsh-6.14.00-config.patch
+Patch1: tcsh-6.14.00-closem.patch
+Patch2: tcsh-6.14.00-iconv.patch
+Patch3: tcsh-6.14.00-lsF.patch
+Patch4: tcsh-6.14.00-dashn.patch
+Patch5: tcsh-6.14.00-read.patch
+Patch6: tcsh-6.14.00-sigint.patch
+Patch7: tcsh-6.14.00-wide-crash.patch
+Patch8: tcsh-6.14.00-colors.patch
+Patch9: tcsh-6.14.00-wide-seeks.patch
+Patch10: tcsh-6.14.00-spell-crash.patch
+Patch11: tcsh-6.14.00-remotehost.patch
+Patch12: tcsh-6.14.00-tinfo.patch
+
+# our patches
+Patch101: tcsh-6.09.00-termios.patch
+Patch106: tcsh-6.10.00-glibc_compat.patch
+Patch107: tcsh-6.14.00-getauthuid-is-not-in-auth_h.patch
+
 BuildRequires:	libtermcap-devel groff-for-man
 Requires(post):	rpm-helper >= 0.7
 Requires(postun):	rpm-helper >= 0.7
@@ -31,12 +45,23 @@ like syntax.
 
 %prep
 %setup -q -n %{name}-%{rversion}
-%patch1 -p1 -b .termios
+%patch0 -p1 -b .config
+%patch1 -p1 -b .closem
+%patch2 -p1 -b .iconv
 %patch3 -p1 -b .lsF
 %patch4 -p1 -b .dashn
 %patch5 -p1 -b .read
-%patch6 -p1 -b .glibc_compat
-%patch7 -p1
+%patch6 -p1 -b .sigint
+%patch7 -p1 -b .wide-crash
+%patch8 -p1 -b .colors
+%patch9 -p1 -b .wide-seeks
+%patch10 -p1 -b .spell-crash
+%patch11 -p1 -b .remotehost
+%patch12 -p1 -b .tinfo
+
+%patch101 -p1 -b .termios
+%patch106 -p1 -b .glibc_compat
+%patch107 -p1
 
 %build
 %configure --bindir=/bin --without-hesiod
