@@ -33,6 +33,7 @@ BuildRequires:	libtermcap-devel groff-for-man
 Requires(post):	rpm-helper >= 0.7
 Requires(postun):	rpm-helper >= 0.7
 Provides:	csh = %{version}
+Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 Tcsh is an enhanced but completely compatible version of csh, the C
