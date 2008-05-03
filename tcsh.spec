@@ -13,11 +13,12 @@ Source1:	alias.csh
 Patch1: tcsh-6.15.00-closem.patch
 Patch12: tcsh-6.14.00-tinfo.patch
 Patch13: tcsh-6.14.00-unprintable.patch
+Patch14: tcsh-6.15.00-hist-sub.patch
+Patch15: tcsh-6.15.00-var-sub.patch
 
 # our patches
 Patch101: tcsh-6.09.00-termios.patch
 Patch106: tcsh-6.10.00-glibc_compat.patch
-Patch107: tcsh-6.14.00-getauthuid-is-not-in-auth_h.patch
 
 BuildRequires:	libtermcap-devel groff-for-man
 Requires(post):	rpm-helper >= 0.7
@@ -38,13 +39,14 @@ like syntax.
 %patch1 -p1 -b .closem
 %patch12 -p1 -b .tinfo
 %patch13 -p1 -b .unprintable
+%patch14 -p1 -b .hist-sub
+%patch15 -p1 -b .var-sub
 
 %patch101 -p1 -b .termios
 %patch106 -p1 -b .glibc_compat
-%patch107 -p1
 
 %build
-%configure --bindir=/bin --without-hesiod
+%configure2_5x --bindir=/bin --without-hesiod
 %make
 nroff -me eight-bit.me > eight-bit.txt
 
