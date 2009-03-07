@@ -3,7 +3,7 @@
 Summary:	An enhanced version of csh, the C shell
 Name:		tcsh
 Version:	6.15
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	BSD
 Group:		Shells
 URL:		http://www.tcsh.org/
