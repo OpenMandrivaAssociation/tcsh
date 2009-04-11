@@ -11,7 +11,7 @@ Source:		ftp://ftp.funet.fi/pub/unix/shells/tcsh/tcsh-%{version}.00.tar.gz
 Source1:	alias.csh
 # patches from fedora
 Patch1: tcsh-6.15.00-closem.patch
-Patch12: tcsh-6.14.00-tinfo.patch
+Patch12: tcsh-6.15.00-tinfo.patch
 Patch13: tcsh-6.14.00-unprintable.patch
 Patch14: tcsh-6.15.00-hist-sub.patch
 Patch15: tcsh-6.15.00-var-sub.patch
