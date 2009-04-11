@@ -3,7 +3,7 @@
 Summary:	An enhanced version of csh, the C shell
 Name:		tcsh
 Version:	6.15
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	BSD
 Group:		Shells
 URL:		http://www.tcsh.org/
@@ -19,8 +19,10 @@ Patch15: tcsh-6.15.00-var-sub.patch
 # our patches
 Patch101: tcsh-6.09.00-termios.patch
 Patch106: tcsh-6.10.00-glibc_compat.patch
-# #40532
-Patch107: tcsh-6.15.00-ls-colors-rs-var.patch
+# handle new DIR_COLORS codes, fixes #40532, #48284
+Patch107: tcsh-6.15.00-ls-colors-var.patch
+# -Wformat -Werror=format-security pseudo fixes
+Patch108: tcsh-6.15.00-str-fmt.patch
 
 BuildRequires:	libtermcap-devel groff-for-man
 Requires(post):	rpm-helper >= 0.7
@@ -49,6 +51,7 @@ like syntax.
 %patch101 -p1 -b .termios
 %patch106 -p1 -b .glibc_compat
 %patch107 -p1 -b .ls-colors
+%patch108 -p1 -b .str-fmt
 
 %build
 %configure2_5x --bindir=/bin --without-hesiod
