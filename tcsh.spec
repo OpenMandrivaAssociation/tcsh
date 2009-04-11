@@ -17,7 +17,7 @@ Patch14: tcsh-6.15.00-hist-sub.patch
 Patch15: tcsh-6.15.00-var-sub.patch
 
 # our patches
-Patch101: tcsh-6.09.00-termios.patch
+Patch101: tcsh-6.15.00-termios.patch
 Patch106: tcsh-6.10.00-glibc_compat.patch
 # handle new DIR_COLORS codes, fixes #40532, #48284
 Patch107: tcsh-6.15.00-ls-colors-var.patch
