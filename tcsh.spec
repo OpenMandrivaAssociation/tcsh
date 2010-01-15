@@ -2,8 +2,8 @@
 
 Summary:	An enhanced version of csh, the C shell
 Name:		tcsh
-Version:	6.15
-Release:	%mkrel 7
+Version:	6.16
+Release:	%mkrel 1
 License:	BSD
 Group:		Shells
 URL:		http://www.tcsh.org/
@@ -46,7 +46,6 @@ like syntax.
 %patch12 -p1 -b .tinfo
 %patch13 -p1 -b .unprintable
 %patch14 -p1 -b .hist-sub
-%patch15 -p1 -b .var-sub
 
 %patch101 -p1 -b .termios
 %patch106 -p1 -b .glibc_compat
