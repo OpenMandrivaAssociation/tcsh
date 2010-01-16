@@ -14,7 +14,6 @@ Patch1: tcsh-6.15.00-closem.patch
 Patch12: tcsh-6.15.00-tinfo.patch
 Patch13: tcsh-6.14.00-unprintable.patch
 Patch14: tcsh-6.15.00-hist-sub.patch
-Patch15: tcsh-6.15.00-var-sub.patch
 
 # our patches
 Patch101: tcsh-6.15.00-termios.patch
