@@ -28,7 +28,6 @@ Requires(post):	rpm-helper >= 0.7
 Requires(postun):	rpm-helper >= 0.7
 Provides:	csh = %{version}
 # explicit file provides
-Provides:	/bin/csh
 Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
