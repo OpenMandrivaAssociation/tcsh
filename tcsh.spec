@@ -2,12 +2,12 @@
 
 Summary:	An enhanced version of csh, the C shell
 Name:		tcsh
-Version:	6.16
+Version:	6.17
 Release:	%mkrel 1
 License:	BSD
 Group:		Shells
 URL:		http://www.tcsh.org/
-Source:		ftp://ftp.funet.fi/pub/unix/shells/tcsh/tcsh-%{version}.00.tar.gz
+Source:		ftp://ftp.astron.com/pub/tcsh/tcsh-%{version}.00.tar.gz
 Source1:	alias.csh
 # patches from fedora
 Patch1: tcsh-6.15.00-closem.patch
@@ -19,9 +19,9 @@ Patch14: tcsh-6.15.00-hist-sub.patch
 Patch101: tcsh-6.15.00-termios.patch
 Patch106: tcsh-6.10.00-glibc_compat.patch
 # handle new DIR_COLORS codes, fixes #40532, #48284
-Patch107: tcsh-6.15.00-ls-colors-var.patch
+Patch107: tcsh-6.17.00-ls-colors-var.patch
 # -Wformat -Werror=format-security pseudo fixes
-Patch108: tcsh-6.15.00-str-fmt.patch
+Patch108: tcsh-6.17.00-str-fmt.patch
 
 BuildRequires:	libtermcap-devel groff-for-man
 Requires(post):	rpm-helper >= 0.7
@@ -47,8 +47,8 @@ like syntax.
 
 %patch101 -p1 -b .termios
 %patch106 -p1 -b .glibc_compat
-%patch107 -p1 -b .ls-colors
-%patch108 -p1 -b .str-fmt
+%patch107 -p0 -b .ls-colors
+%patch108 -p0 -b .str-fmt
 
 %build
 %configure2_5x --bindir=/bin --without-hesiod
