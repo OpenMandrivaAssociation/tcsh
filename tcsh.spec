@@ -58,14 +58,12 @@ nroff -me eight-bit.me > eight-bit.txt
 %install
 rm -rf %{buildroot}
 
-#mkdir -p %{buildroot}%{_mandir}/man1 %{buildroot}/bin
 install -Ds tcsh %{buildroot}/bin/tcsh
 install -D tcsh.man %{buildroot}%{_mandir}/man1/tcsh.1
 
 ln -s tcsh.1 %{buildroot}%{_mandir}/man1/csh.1
 ln -sf tcsh %{buildroot}/bin/csh
 
-#mkdir -p %{buildroot}/etc/profile.d/
 install -D %{SOURCE1} %{buildroot}/etc/profile.d/$(basename %{SOURCE1})
 
 %clean
