@@ -10,29 +10,29 @@ URL:		http://www.tcsh.org/
 Source:		ftp://ftp.astron.com/pub/tcsh/tcsh-%{version}.00.tar.gz
 Source1:	alias.csh
 # patches from fedora
-Patch1: tcsh-6.15.00-closem.patch
-Patch12: tcsh-6.15.00-tinfo.patch
-Patch13: tcsh-6.14.00-unprintable.patch
-Patch14: tcsh-6.15.00-hist-sub.patch
+Patch1:		tcsh-6.15.00-closem.patch
+Patch12:	tcsh-6.15.00-tinfo.patch
+Patch13:	tcsh-6.14.00-unprintable.patch
+Patch14:	tcsh-6.15.00-hist-sub.patch
 
 # our patches
-Patch101: tcsh-6.15.00-termios.patch
-Patch106: tcsh-6.10.00-glibc_compat.patch
+Patch101:	tcsh-6.15.00-termios.patch
+Patch106:	tcsh-6.10.00-glibc_compat.patch
 # handle new DIR_COLORS codes, fixes #40532, #48284
-Patch107: tcsh-6.17.00-ls-colors-var.patch
+Patch107:	tcsh-6.17.00-ls-colors-var.patch
 # -Wformat -Werror=format-security pseudo fixes
-Patch108: tcsh-6.17.00-str-fmt.patch
+Patch108:	tcsh-6.17.00-str-fmt.patch
 
 BuildRequires:	libtermcap-devel groff-for-man
 Requires(post):	rpm-helper >= 0.7
-Requires(postun):	rpm-helper >= 0.7
+Requires(postun): rpm-helper >= 0.7
 Provides:	csh = %{version}
 # explicit file provides
-Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 Tcsh is an enhanced but completely compatible version of csh, the C
-shell.  Tcsh is a command language interpreter which can be used both
+shell. Tcsh is a command language interpreter which can be used both
 as an interactive login shell and as a shell script command processor.
 Tcsh includes a command line editor, programmable word completion,
 spelling correction, a history mechanism, job control and a C language
@@ -56,19 +56,20 @@ like syntax.
 nroff -me eight-bit.me > eight-bit.txt
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
-mkdir -p %{buildroot}%{_mandir}/man1 %{buildroot}/bin
-install -s tcsh %{buildroot}/bin/tcsh
-install tcsh.man %{buildroot}%{_mandir}/man1/tcsh.1
+#mkdir -p %{buildroot}%{_mandir}/man1 %{buildroot}/bin
+install -Ds tcsh %{buildroot}/bin/tcsh
+install -D tcsh.man %{buildroot}%{_mandir}/man1/tcsh.1
+
 ln -s tcsh.1 %{buildroot}%{_mandir}/man1/csh.1
 ln -sf tcsh %{buildroot}/bin/csh
 
-mkdir -p %{buildroot}/etc/profile.d/
-install %{SOURCE1} %{buildroot}/etc/profile.d/$(basename %{SOURCE1})
+#mkdir -p %{buildroot}/etc/profile.d/
+install -D %{SOURCE1} %{buildroot}/etc/profile.d/$(basename %{SOURCE1})
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %post
 /usr/share/rpm-helper/add-shell %{name} $1 /bin/csh
@@ -82,8 +83,6 @@ install %{SOURCE1} %{buildroot}/etc/profile.d/$(basename %{SOURCE1})
 %defattr(644,root,root,755)
 %doc NewThings FAQ Fixes eight-bit.txt complete.tcsh
 %doc Ported README* WishList Y2K
-%config(noreplace) /etc/profile.d/*
+%config(noreplace) %{_sysconfdir}/profile.d/*
 %attr(755,root,root) /bin/*
-%_mandir/*/*
-
-
+%{_mandir}/*/*
