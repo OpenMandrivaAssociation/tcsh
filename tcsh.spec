@@ -3,7 +3,7 @@
 Summary:	An enhanced version of csh, the C shell
 Name:		tcsh
 Version:	6.17
-Release:	%mkrel 3
+Release:	4
 License:	BSD
 Group:		Shells
 URL:		http://www.tcsh.org/
@@ -27,6 +27,7 @@ BuildRequires:	libtermcap-devel groff-for-man
 Requires(post):	rpm-helper >= 0.7
 Requires(postun): rpm-helper >= 0.7
 Provides:	csh = %{version}
+Provides:	/bin/csh
 # explicit file provides
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
