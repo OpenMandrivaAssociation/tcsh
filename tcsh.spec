@@ -7,7 +7,7 @@ Release:	4
 License:	BSD
 Group:		Shells
 URL:		http://www.tcsh.org/
-Source:		ftp://ftp.astron.com/pub/tcsh/tcsh-%{version}.00.tar.gz
+Source0:	ftp://ftp.astron.com/pub/tcsh/tcsh-%{version}.00.tar.gz
 Source1:	alias.csh
 # patches from fedora
 Patch1:		tcsh-6.15.00-closem.patch
@@ -27,9 +27,8 @@ BuildRequires:	libtermcap-devel groff-for-man
 Requires(post):	rpm-helper >= 0.7
 Requires(postun): rpm-helper >= 0.7
 Provides:	csh = %{version}
-Provides:	/bin/csh
 # explicit file provides
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+Provides:	/bin/csh
 
 %description
 Tcsh is an enhanced but completely compatible version of csh, the C
@@ -57,8 +56,6 @@ like syntax.
 nroff -me eight-bit.me > eight-bit.txt
 
 %install
-rm -rf %{buildroot}
-
 install -Ds tcsh %{buildroot}/bin/tcsh
 install -D tcsh.man %{buildroot}%{_mandir}/man1/tcsh.1
 
@@ -66,9 +63,6 @@ ln -s tcsh.1 %{buildroot}%{_mandir}/man1/csh.1
 ln -sf tcsh %{buildroot}/bin/csh
 
 install -D %{SOURCE1} %{buildroot}/etc/profile.d/$(basename %{SOURCE1})
-
-%clean
-rm -rf %{buildroot}
 
 %post
 /usr/share/rpm-helper/add-shell %{name} $1 /bin/csh
