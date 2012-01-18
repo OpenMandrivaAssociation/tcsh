@@ -23,7 +23,7 @@ Patch107:	tcsh-6.17.00-ls-colors-var.patch
 # -Wformat -Werror=format-security pseudo fixes
 Patch108:	tcsh-6.17.00-str-fmt.patch
 
-BuildRequires:	libtermcap-devel groff-for-man
+BuildRequires:	ncurses-devel groff-for-man
 Requires(post):	rpm-helper >= 0.7
 Requires(postun): rpm-helper >= 0.7
 Provides:	csh = %{version}
