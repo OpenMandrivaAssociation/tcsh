@@ -1,6 +1,8 @@
---- tcsh-6.10.00/sh.h	Sun Nov 19 15:50:43 2000
-+++ tcsh-6.10.00/sh.h.new	Tue Feb  6 15:11:33 2001
-@@ -208,7 +208,7 @@
+Index: sh.h
+===================================================================
+--- sh.h
++++ sh.h	2012-01-22 22:40:25.219838617 +0100
+@@ -249,7 +249,7 @@
  # include <sys/procstats.h>
  #endif /* _SEQUENT_ */
  #if (defined(POSIX) || SYSVREL > 0) && !defined(WINNT_NATIVE)

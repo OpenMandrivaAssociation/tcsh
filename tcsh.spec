@@ -1,13 +1,12 @@
-%define rversion %{version}.00
-
 Summary:	An enhanced version of csh, the C shell
 Name:		tcsh
-Version:	6.17
-Release:	4
+Version:	6.18.01
+Release:	2
 License:	BSD
 Group:		Shells
 URL:		http://www.tcsh.org/
-Source0:	ftp://ftp.astron.com/pub/tcsh/tcsh-%{version}.00.tar.gz
+Source0:	ftp://ftp.astron.com/pub/%{name}/%{name}-%{version}.tar.gz
+
 Source1:	alias.csh
 # patches from fedora
 Patch1:		tcsh-6.15.00-closem.patch
@@ -16,19 +15,17 @@ Patch13:	tcsh-6.14.00-unprintable.patch
 Patch14:	tcsh-6.15.00-hist-sub.patch
 
 # our patches
-Patch101:	tcsh-6.15.00-termios.patch
 Patch106:	tcsh-6.10.00-glibc_compat.patch
-# handle new DIR_COLORS codes, fixes #40532, #48284
+# handle new DIR_COLORS codes, fixes #40532, #48284 (partly merged)
 Patch107:	tcsh-6.17.00-ls-colors-var.patch
-# -Wformat -Werror=format-security pseudo fixes
-Patch108:	tcsh-6.17.00-str-fmt.patch
 
-BuildRequires:	ncurses-devel groff-for-man
+BuildRequires:	termcap-devel
+BuildRequires:  groff-for-man
 Requires(post):	rpm-helper >= 0.7
 Requires(postun): rpm-helper >= 0.7
 Provides:	csh = %{version}
-# explicit file provides
 Provides:	/bin/csh
+Provides:   /bin/tcsh
 
 %description
 Tcsh is an enhanced but completely compatible version of csh, the C
@@ -38,17 +35,16 @@ Tcsh includes a command line editor, programmable word completion,
 spelling correction, a history mechanism, job control and a C language
 like syntax.
 
-%prep
-%setup -q -n %{name}-%{rversion}
-%patch1 -p1 -b .closem
-%patch12 -p1 -b .tinfo
-%patch13 -p1 -b .unprintable
-%patch14 -p1 -b .hist-sub
 
-%patch101 -p1 -b .termios
-%patch106 -p1 -b .glibc_compat
-%patch107 -p0 -b .ls-colors
-%patch108 -p0 -b .str-fmt
+%prep
+%setup -q
+%patch1 -p0
+%patch12 -p0
+#patch13 -p1 -b .unprintable
+%patch14 -p0
+
+%patch106 -p0
+%patch107 -p0
 
 %build
 %configure2_5x --bindir=/bin --without-hesiod
@@ -65,12 +61,12 @@ ln -sf tcsh %{buildroot}/bin/csh
 install -D %{SOURCE1} %{buildroot}/etc/profile.d/$(basename %{SOURCE1})
 
 %post
-/usr/share/rpm-helper/add-shell %{name} $1 /bin/csh
-/usr/share/rpm-helper/add-shell %{name} $1 /bin/tcsh
+%_add_shell_helper %{name} $1 /bin/csh
+%_add_shell_helper %{name} $1 /bin/tcsh
 
 %postun
-/usr/share/rpm-helper/del-shell %{name} $1 /bin/csh
-/usr/share/rpm-helper/del-shell %{name} $1 /bin/tcsh
+%_del_shell_helper %{name} $1 /bin/csh
+%_del_shell_helper %{name} $1 /bin/tcsh
 
 %files
 %defattr(644,root,root,755)
