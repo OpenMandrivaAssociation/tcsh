@@ -1,3 +1,5 @@
+%define	debug_package	%nil
+
 Summary:	An enhanced version of csh, the C shell
 Name:		tcsh
 Version:	6.18.01
@@ -19,7 +21,7 @@ Patch106:	tcsh-6.10.00-glibc_compat.patch
 # handle new DIR_COLORS codes, fixes #40532, #48284 (partly merged)
 Patch107:	tcsh-6.17.00-ls-colors-var.patch
 
-BuildRequires:	termcap-devel
+BuildRequires:	ncurses-devel
 BuildRequires:  groff-for-man
 Requires(post):	rpm-helper >= 0.7
 Requires(postun): rpm-helper >= 0.7
