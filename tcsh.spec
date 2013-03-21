@@ -12,6 +12,7 @@ Source0:	ftp://ftp.astron.com/pub/%{name}/%{name}-%{version}.tar.gz
 Source1:	alias.csh
 # patches from fedora
 Patch1:		tcsh-6.15.00-closem.patch
+Patch2:		tcsh-aarch64.patch
 Patch12:	tcsh-6.15.00-tinfo.patch
 Patch13:	tcsh-6.14.00-unprintable.patch
 Patch14:	tcsh-6.15.00-hist-sub.patch
@@ -41,6 +42,7 @@ like syntax.
 %prep
 %setup -q
 %patch1 -p0
+%patch2 -p1
 %patch12 -p0
 #patch13 -p1 -b .unprintable
 %patch14 -p0
@@ -54,7 +56,7 @@ like syntax.
 nroff -me eight-bit.me > eight-bit.txt
 
 %install
-install -Ds tcsh %{buildroot}/bin/tcsh
+install -D tcsh %{buildroot}/bin/tcsh
 install -D tcsh.man %{buildroot}%{_mandir}/man1/tcsh.1
 
 ln -s tcsh.1 %{buildroot}%{_mandir}/man1/csh.1
