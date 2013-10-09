@@ -22,7 +22,7 @@ Patch106:	tcsh-6.10.00-glibc_compat.patch
 # handle new DIR_COLORS codes, fixes #40532, #48284 (partly merged)
 Patch107:	tcsh-6.17.00-ls-colors-var.patch
 
-BuildRequires:	pkgconfig(tinfo)
+BuildRequires:	pkgconfig(ncurses)
 BuildRequires:	groff-for-man
 Requires(post):	rpm-helper >= 0.7
 Requires(postun):	rpm-helper >= 0.7
