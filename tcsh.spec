@@ -3,7 +3,7 @@
 Summary:	An enhanced version of csh, the C shell
 Name:		tcsh
 Version:	6.18.01
-Release:	3
+Release:	4
 License:	BSD
 Group:		Shells
 URL:		http://www.tcsh.org/
@@ -22,7 +22,7 @@ Patch106:	tcsh-6.10.00-glibc_compat.patch
 # handle new DIR_COLORS codes, fixes #40532, #48284 (partly merged)
 Patch107:	tcsh-6.17.00-ls-colors-var.patch
 
-BuildRequires:	pkgconfig(ncurses)
+BuildRequires:	pkgconfig(tinfo)
 BuildRequires:	groff-for-man
 Requires(post):	rpm-helper >= 0.7
 Requires(postun):	rpm-helper >= 0.7
