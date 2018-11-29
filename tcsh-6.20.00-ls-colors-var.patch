@@ -1,12 +1,10 @@
-Index: tw.color.c
-===================================================================
---- tw.color.c
-+++ tw.color.c	2012-01-22 23:16:54.991462705 +0100
+--- tw.color.c.5~	2018-11-29 01:16:19.650968220 +0100
++++ tw.color.c	2018-11-29 01:16:55.206087498 +0100
 @@ -89,6 +89,7 @@
      VAR(NOS, "hl", "44;37"),    /* Reg file extra hard links, obsolete? */
      VAR(NOS, "mh", "44;37"),    /* Reg file extra hard links */
      VAR(NOS, "ca", "30;41"),    /* File with capability */
-+    VAR(NOS, "cl", ""),         /* CLRTOEOL */
++    VAR(NOS, "cl", ""),		/* CLRTOEOL */
  };
  
- enum FileType {
+ #define nvariables (sizeof(variables)/sizeof(variables[0]))
