@@ -1,9 +1,10 @@
-%define debug_package %nil
+# Workaround to build with GCC 10
+%global optflags %{optflags} -fcommon
 
 Summary:	An enhanced version of csh, the C shell
 Name:		tcsh
 Version:	6.20.00
-Release:	1
+Release:	2
 License:	BSD
 Group:		Shells
 URL:		http://www.tcsh.org/
@@ -35,7 +36,6 @@ as an interactive login shell and as a shell script command processor.
 Tcsh includes a command line editor, programmable word completion,
 spelling correction, a history mechanism, job control and a C language
 like syntax.
-
 
 %prep
 %autosetup -p0
