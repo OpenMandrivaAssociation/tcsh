@@ -3,8 +3,8 @@
 
 Summary:	An enhanced version of csh, the C shell
 Name:		tcsh
-Version:	6.20.00
-Release:	2
+Version:	6.24.01
+Release:	1
 License:	BSD
 Group:		Shells
 URL:		http://www.tcsh.org/
@@ -12,7 +12,6 @@ Source0:	ftp://ftp.astron.com/pub/%{name}/%{name}-%{version}.tar.gz
 
 Source1:	alias.csh
 # patches from fedora
-Patch1:		tcsh-6.15.00-closem.patch
 Patch12:	tcsh-6.20.00-tinfo.patch
 Patch14:	tcsh-6.20.00-hist-sub.patch
 
@@ -41,31 +40,31 @@ like syntax.
 %autosetup -p0
 
 %build
-%configure --bindir=/bin --without-hesiod
+%configure --without-hesiod
 %make
 nroff -me eight-bit.me > eight-bit.txt
 
 %install
-install -D tcsh %{buildroot}/bin/tcsh
+install -D tcsh %{buildroot}%{_bindir}/tcsh
 install -D tcsh.man %{buildroot}%{_mandir}/man1/tcsh.1
 
 ln -s tcsh.1 %{buildroot}%{_mandir}/man1/csh.1
-ln -sf tcsh %{buildroot}/bin/csh
+ln -sf tcsh %{buildroot}%{_bindir}/csh
 
 install -D %{SOURCE1} %{buildroot}/etc/profile.d/$(basename %{SOURCE1})
 
 %post
-%_add_shell_helper %{name} $1 /bin/csh
-%_add_shell_helper %{name} $1 /bin/tcsh
+%_add_shell_helper %{name} $1 %{_bindir}/csh
+%_add_shell_helper %{name} $1 %{_bindir}/tcsh
 
 %postun
-%_del_shell_helper %{name} $1 /bin/csh
-%_del_shell_helper %{name} $1 /bin/tcsh
+%_del_shell_helper %{name} $1 %{_bindir}/csh
+%_del_shell_helper %{name} $1 %{_bindir}/tcsh
 
 %files
 %defattr(644,root,root,755)
 %doc NewThings FAQ Fixes eight-bit.txt complete.tcsh
 %doc Ported README* WishList Y2K
 %config(noreplace) %{_sysconfdir}/profile.d/*
-%attr(755,root,root) /bin/*
+%attr(755,root,root) %{_bindir}/*
 %{_mandir}/*/*
