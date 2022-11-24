@@ -3,7 +3,7 @@
 
 Summary:	An enhanced version of csh, the C shell
 Name:		tcsh
-Version:	6.24.01
+Version:	6.24.02
 Release:	1
 License:	BSD
 Group:		Shells
@@ -13,7 +13,6 @@ Source0:	ftp://ftp.astron.com/pub/%{name}/%{name}-%{version}.tar.gz
 Source1:	alias.csh
 # patches from fedora
 Patch12:	tcsh-6.20.00-tinfo.patch
-Patch14:	tcsh-6.20.00-hist-sub.patch
 
 # our patches
 Patch106:	tcsh-6.10.00-glibc_compat.patch
