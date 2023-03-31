@@ -4,7 +4,7 @@
 Summary:	An enhanced version of csh, the C shell
 Name:		tcsh
 Version:	6.24.02
-Release:	1
+Release:	2
 License:	BSD
 Group:		Shells
 URL:		http://www.tcsh.org/
