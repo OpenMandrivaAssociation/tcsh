@@ -3,8 +3,8 @@
 
 Summary:	An enhanced version of csh, the C shell
 Name:		tcsh
-Version:	6.24.02
-Release:	2
+Version:	6.24.08
+Release:	1
 License:	BSD
 Group:		Shells
 URL:		http://www.tcsh.org/
@@ -16,8 +16,6 @@ Patch12:	tcsh-6.20.00-tinfo.patch
 
 # our patches
 Patch106:	tcsh-6.10.00-glibc_compat.patch
-# handle new DIR_COLORS codes, fixes #40532, #48284 (partly merged)
-Patch107:	tcsh-6.20.00-ls-colors-var.patch
 
 BuildRequires:	pkgconfig(ncurses)
 BuildRequires:	groff-for-man
@@ -62,7 +60,7 @@ install -D %{SOURCE1} %{buildroot}/etc/profile.d/$(basename %{SOURCE1})
 
 %files
 %defattr(644,root,root,755)
-%doc NewThings FAQ Fixes eight-bit.txt complete.tcsh
+%doc FAQ Fixes eight-bit.txt complete.tcsh
 %doc Ported README* WishList Y2K
 %config(noreplace) %{_sysconfdir}/profile.d/*
 %attr(755,root,root) %{_bindir}/*
