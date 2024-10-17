@@ -7,7 +7,7 @@ Version:	6.24.13
 Release:	1
 License:	BSD
 Group:		Shells
-URL:		http://www.tcsh.org/
+URL:		https://www.tcsh.org/
 Source0:	ftp://ftp.astron.com/pub/%{name}/%{name}-%{version}.tar.gz
 
 Source1:	alias.csh
