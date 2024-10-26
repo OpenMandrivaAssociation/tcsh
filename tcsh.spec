@@ -4,11 +4,11 @@
 Summary:	An enhanced version of csh, the C shell
 Name:		tcsh
 Version:	6.24.13
-Release:	1
+Release:	2
 License:	BSD
 Group:		Shells
 URL:		https://www.tcsh.org/
-Source0:	ftp://ftp.astron.com/pub/%{name}/%{name}-%{version}.tar.gz
+Source0:	https://astron.com/pub/%{name}/%{name}-%{version}.tar.gz
 
 Source1:	alias.csh
 # patches from fedora
@@ -49,14 +49,6 @@ ln -s tcsh.1 %{buildroot}%{_mandir}/man1/csh.1
 ln -sf tcsh %{buildroot}%{_bindir}/csh
 
 install -D %{SOURCE1} %{buildroot}/etc/profile.d/$(basename %{SOURCE1})
-
-%post
-%_add_shell_helper %{name} $1 %{_bindir}/csh
-%_add_shell_helper %{name} $1 %{_bindir}/tcsh
-
-%postun
-%_del_shell_helper %{name} $1 %{_bindir}/csh
-%_del_shell_helper %{name} $1 %{_bindir}/tcsh
 
 %files
 %defattr(644,root,root,755)
