@@ -17,6 +17,11 @@ Patch12:	tcsh-6.20.00-tinfo.patch
 # our patches
 Patch106:	tcsh-6.10.00-glibc_compat.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(ncurses)
 BuildRequires:	groff-for-man
 Requires(post):	rpm-helper >= 0.7
